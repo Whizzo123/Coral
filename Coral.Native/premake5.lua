@@ -4,7 +4,7 @@ project "Coral.Native"
     language "C++"
     cppdialect "C++20"
     kind "StaticLib"
-    staticruntime "Off"
+    staticruntime "on"
 
 	dependson "Coral.Managed"
 
