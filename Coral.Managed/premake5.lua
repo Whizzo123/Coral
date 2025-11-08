@@ -13,7 +13,7 @@ project "Coral.Managed"
         dependson { "Coral.Generator" }
 
         -- Don't specify architecture here. (see https://github.com/premake/premake-core/issues/1758)
-        architecture "x86_64"
+        architecture "x64"
         propertytags {
             { "AppendTargetFrameworkToOutputPath", "false" },
             { "Nullable", "enable" },
