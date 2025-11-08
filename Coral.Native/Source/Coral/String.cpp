@@ -38,6 +38,9 @@ namespace Coral {
 
 	String::operator std::string() const
 	{
+		if (!m_String) {
+			return std::string();
+		}
 		StringView string(m_String);
 
 #if defined(CORAL_WIDE_CHARS)
