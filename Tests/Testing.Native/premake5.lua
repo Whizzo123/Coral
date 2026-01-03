@@ -1,16 +1,10 @@
-local CoralDotNetPath = os.getenv("CORAL_DOTNET_PATH")
-
 include "../../Premake/DebuggerTypeExtension.lua"
 
 project "Testing.Native"
     language "C++"
-    cppdialect "C++20"
+    cppdialect "C++17"
     kind "ConsoleApp"
     staticruntime "Off"
-
-    -- Can't specify 64-bit architecture in the workspace level since VS 2022 (see https://github.com/premake/premake-core/issues/1758)
-    architecture "x86_64"
-
     debuggertype "NativeWithManagedCore"
 
     files {
@@ -20,13 +14,7 @@ project "Testing.Native"
 
     externalincludedirs { "../../Coral.Native/Include/" }
 
-	postbuildcommands {
-		'{COPYFILE} "%{wks.location}/Coral.Managed/Coral.Managed.runtimeconfig.json" "%{cfg.targetdir}"',
-	}
-
-	links {
-		"Coral.Native",
-	}
+	links { "Coral.Native", }
 
     filter { "configurations:Debug" }
         runtime "Debug"
@@ -36,5 +24,6 @@ project "Testing.Native"
 
     filter { "configurations:Release" }
         runtime "Release"
+		symbols "Off"
         defines { "CORAL_TESTING_RELEASE" }
 	filter {}
