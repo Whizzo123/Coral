@@ -125,5 +125,10 @@ namespace Coral {
 		m_Type = nullptr;
 	}
 
+	void* ManagedObject::GetHandle() const
+	{
+		return m_Handle;
+	}
+
 }
 
