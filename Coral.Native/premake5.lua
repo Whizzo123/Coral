@@ -49,3 +49,6 @@ project "Coral.Native"
 	filter { "system:macosx" }
 		defines { "CORAL_MACOSX" }
     filter { }
+
+    filter "system:linux"
+	    pic "On"

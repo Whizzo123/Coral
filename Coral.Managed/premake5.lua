@@ -30,10 +30,6 @@ project "Coral.Managed"
 			EnableDynamicLoading = "true",
 		}
 
-        disablewarnings {
-            "CS8500"
-        }
-
         files {
             "Source/**.cs"
         }
