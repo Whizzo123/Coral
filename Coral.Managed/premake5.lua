@@ -28,6 +28,8 @@ project "Coral.Managed"
 			Nullable = "enable",
 			CopyLocalLockFileAssemblies = "true",
 			EnableDynamicLoading = "true",
+			PlatformTarget = "x64",
+			GenerateRuntimeConfigurationFiles = "true",
 		}
 
         files {
