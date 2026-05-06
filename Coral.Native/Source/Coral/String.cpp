@@ -39,8 +39,11 @@ namespace Coral {
 
 	String::operator std::string() const
 	{
-		UCStringView string(m_String);
+		if(m_String == nullptr) {
+			return "";
+		}
 
+		UCStringView string(m_String);
 		return StringHelper::ConvertWideToUtf8(string);
 	}
 
