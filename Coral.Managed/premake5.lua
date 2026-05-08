@@ -3,6 +3,12 @@ project "Coral.Managed"
         kind "StaticLib"
 		-- Mach-y AR requires a non-empty file list for archive creation
 		files { "Source/Dummy.cpp" }
+        prebuildcommands {
+            'dotnet build "%{prj.location}/Coral.Managed.csproj"' ..
+            ' -c %{cfg.buildcfg}' ..
+            ' -o "%{prj.location}/../Build/%{cfg.buildcfg}"' ..
+            ' --nologo'
+        }
 
     filter { "action:vs* or system:windows" }
         language "C#"

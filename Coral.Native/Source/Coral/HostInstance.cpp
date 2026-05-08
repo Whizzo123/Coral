@@ -169,16 +169,20 @@ namespace Coral {
 			std::filesystem::path("/usr/share/dotnet/host/fxr/")
 		};
 #else
-		auto searchPaths = std::array
-		{
-			std::filesystem::path("/usr/local/lib/dotnet/host/fxr/"),
-			std::filesystem::path("/usr/local/lib64/dotnet/host/fxr/"),
-			std::filesystem::path("/usr/local/share/dotnet/host/fxr/"),
+		std::vector<std::filesystem::path> searchPaths;
 
-			std::filesystem::path("/usr/lib/dotnet/host/fxr/"),
-			std::filesystem::path("/usr/lib64/dotnet/host/fxr/"),
-			std::filesystem::path("/usr/share/dotnet/host/fxr/")
-		};
+		if (const char* dotnetRoot = std::getenv("DOTNET_ROOT"))
+			searchPaths.push_back(std::filesystem::path(dotnetRoot) / "host/fxr");
+
+		if (const char* home = std::getenv("HOME"))
+			searchPaths.push_back(std::filesystem::path(home) / ".dotnet/host/fxr");
+
+		searchPaths.push_back("/usr/local/lib/dotnet/host/fxr/");
+		searchPaths.push_back("/usr/local/lib64/dotnet/host/fxr/");
+		searchPaths.push_back("/usr/local/share/dotnet/host/fxr/");
+		searchPaths.push_back("/usr/lib/dotnet/host/fxr/");
+		searchPaths.push_back("/usr/lib64/dotnet/host/fxr/");
+		searchPaths.push_back("/usr/share/dotnet/host/fxr/");
 #endif
 
 		for (const auto& path : searchPaths)
