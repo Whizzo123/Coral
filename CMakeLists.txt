@@ -57,7 +57,3 @@ target_include_directories(Coral.Native
             "${CORAL_ROOT}/NetCore"
 )
 
-target_compile_definitions(Coral.Native PUBLIC
-    $<$<PLATFORM_ID:Windows>:CORAL_WINDOWS>
-    $<$<PLATFORM_ID:Linux>:CORAL_LINUX>
-)
